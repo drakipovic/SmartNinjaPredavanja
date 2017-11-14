@@ -1,0 +1,42 @@
+#elementsInMiddle{
+  text-align: center;
+}
+
+#titleText{
+  margin-top: 200px;
+  font-size: 100px;
+  margin-bottom: 30px;
+}
+
+#search{
+  width: 450px;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+.searchButton{
+  color: grey;
+  font-size: 15px;
+  padding: 10px;
+
+}
+
+#languageSelect{
+  margin-top: 15px;
+}
+
+.red{
+  color: red;
+}
+
+.blue{
+  color: blue;
+}
+
+.yellow{
+  color: yellow;
+}
+
+.green{
+  color: green;
+}
