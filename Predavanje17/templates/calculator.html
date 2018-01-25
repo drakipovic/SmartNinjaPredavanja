@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <h1>Calculator</h1>
+
+    <form action="/calculator" method="post">
+        <input placeholder="Unesi prvi broj" value="{{first_number}}" name="first_number"/>
+        <input placeholder="(+, -, /, *)" value="{{operation}}" name="operation"/>
+        <input placeholder="Unesi drugi broj" value="{{second_number}}" name="second_number"/>
+
+        = {{result}}
+        <p><button type="submit">Izracunaj</button></p>
+    </form>
+</body>
+</html>
