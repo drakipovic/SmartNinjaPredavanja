@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+
+    <img src="{{image_url}}" />
+
+
+    <form action="/quiz" method="post">
+        <input readonly value="{{country_name}}" name="country_name"/>
+        <input name="capital" value="{{capital}}" placeholder="Enter capital city name" />
+        <button type="submit">Check result</button>
+    </form>
+
+    <p>{{result}}</p>
+
+</body>
+</html>
