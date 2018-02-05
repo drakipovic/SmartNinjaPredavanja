@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista poruka</title>
+</head>
+<body>
+    <h1>Lista svih poruka</h1>
+
+    {% for message in messages %}
+        <a href="/message/{{message.key.id()}}"><p>{{message}}</p></a>
+    {% endfor %}
+</body>
+</html>
