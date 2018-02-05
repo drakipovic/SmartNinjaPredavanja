@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message details</title>
+</head>
+<body>
+
+    <p>Name: {{message.name}}</p>
+    <p>Email: {{message.email}}</p>
+    <p>Text: {{message.text}}</p>
+    <p>Created: {{message.created}}</p>
+
+    <p>
+        <a href="/messages/{{message.key.id()}}/edit">Edit message</a>
+        <a href="/messages/{{message.key.id()}}/delete">Delete message</a>
+    </p>
+
+    <p><a href="/messages">Go back</a></p>
+
+</body>
+</html>

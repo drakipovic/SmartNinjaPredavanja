@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit message</title>
+</head>
+<body>
+    <form method="post" action="/messages/{{message.key.id()}}/edit">
+        <p><input readonly value="{{message.name}}"/></p>
+        <p><input readonly value="{{message.email}}"/></p>
+        <p>
+            <textarea name="text">{{message.text}}</textarea>
+        </p>
+
+        <button type="submit">Edit message</button>
+    </form>
+</body>
+</html>
