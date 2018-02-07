@@ -1,6 +1,8 @@
 import os
+
 import jinja2
 import webapp2
+from google.appengine.api import users
 
 from models import GuestbookMessage
 
@@ -31,14 +33,30 @@ class BaseHandler(webapp2.RequestHandler):
 class GuestBookMessageHandler(BaseHandler):
 
     def get(self):
-        return self.render_template("guestbook_message.html")
+        user = users.get_current_user()
+
+        if user:
+            logged_in = True
+            logout_url = users.create_logout_url('/')
+
+            params = {"logged_in": logged_in, "user": user, "logout_url": logout_url}
+
+        else:
+            logged_in = False
+            login_url = users.create_login_url('/')
+
+            params = {"logged_in": logged_in, "user": user, "login_url": login_url}
+
+        return self.render_template("guestbook_message.html", params=params)
+
 
     def post(self):
         name = self.request.get("name")
-        email = self.request.get("email")
         text = self.request.get("text")
 
-        msg = GuestbookMessage(name=name, email=email, text=text)
+        user = users.get_current_user()
+
+        msg = GuestbookMessage(name=name, email=user.email(), text=text)
         msg.put()
 
         return self.redirect_to("thanks-page")
@@ -58,13 +76,20 @@ class GuestBookMessageDetailsHandler(BaseHandler):
     def get(self, message_id):
         message = GuestbookMessage.get_by_id(int(message_id))
 
-        params={"message": message}
+        is_admin = users.is_current_user_admin()
+
+        params={"message": message, "is_admin": is_admin}
         return self.render_template("guestbook_message_details.html", params=params)
 
 
 class GuestBookMessageEditHanlder(BaseHandler):
 
     def get(self, message_id):
+        is_admin = users.is_current_user_admin()
+
+        if not is_admin:
+            return self.write("Nisi admin, ne mozes pristupit stranici.")
+
         message = GuestbookMessage.get_by_id(int(message_id))
 
         params={"message": message}
@@ -72,6 +97,11 @@ class GuestBookMessageEditHanlder(BaseHandler):
         return self.render_template("guestbook_message_edit.html", params=params)
 
     def post(self, message_id):
+        is_admin = users.is_current_user_admin()
+
+        if not is_admin:
+            return self.write("Nisi admin, ne mozes pristupit stranici.")
+
         text = self.request.get("text")
 
         message = GuestbookMessage.get_by_id(int(message_id))

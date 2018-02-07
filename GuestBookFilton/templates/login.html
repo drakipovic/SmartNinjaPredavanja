@@ -2,23 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Leave a message</title>
+    <title>Login</title>
 </head>
 <body>
     {% if logged_in %}
         <h2>Hello, SmartNinja {{user.nickname()}}</h2>
-        <form action="/" method="post">
-            <input placeholder="Enter your name" name="name" /><br/>
-            <textarea name="text" ></textarea><br/>
-
-            <button type="submit">Leave message</button>
-        </form>
 
         <p><a href="{{ logout_url }}">Logout</a></p>
     {% else %}
         <h2>Hello anonymous SmartNinja</h2>
         <p>Please login here: <a href="{{ login_url }}">Login</a></p>
     {% endif %}
-
 </body>
 </html>

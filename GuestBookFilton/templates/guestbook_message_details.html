@@ -12,8 +12,10 @@
     <p>Created: {{message.created}}</p>
 
     <p>
-        <a href="/messages/{{message.key.id()}}/edit">Edit message</a>
-        <a href="/messages/{{message.key.id()}}/delete">Delete message</a>
+        {% if is_admin %}
+            <a href="/messages/{{message.key.id()}}/edit">Edit message</a>
+            <a href="/messages/{{message.key.id()}}/delete">Delete message</a>
+        {% endif %}
     </p>
 
     <p><a href="/messages">Go back</a></p>
