@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}TODO{% endblock title %}
+
+{% block page_content %}
+
+<form>
+    <div class="form-group">
+        <label>From: </label>
+        <p>{{ message.from_email }}</p>
+    </div>
+    <div class="form-group">
+        <label>Subject: </label>
+        <p>{{ message.subject }}</p>
+    </div>
+    <div class="form-group">
+        <p>{{ message.content }}</p>
+    </div>
+</form>
+
+{% endblock page_content %}
+

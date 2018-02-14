@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">MAIL</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Inbox</a></li>
+              <li>
+                <a href="/new">New</a>
+                </li>
+              <li>
+                  <a href="/?archived=1">Archive</a>
+              </li>
+              <li>
+                  <a href="/?sent=1">Sent messages</a>
+              </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if loggedIn %}
+                  <li>
+                      <a href="{{ logOutUrl }}">Logout</a>
+                  </li>
+                {% endif %}
+            </ul>
+          </div>
+        </nav>
+        <div class="container">
+            {% block page_content %}
+            {% endblock page_content %}
+        </div>
+
+
+    </body>
+</html>

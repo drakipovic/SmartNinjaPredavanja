@@ -31,6 +31,7 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
+
         return self.render_template("hello.html")
 
 

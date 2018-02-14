@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}TODO{% endblock title %}
+
+{% block page_content %}
+
+<form method="post">
+    <div class="form-group">
+        <h1>Delete message: {{ message.content }}</h1>
+    </div>
+    <div class="form-group">
+        <p>
+            Are you sure you want to delete this message?
+        </p>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Yes" class="btn btn-danger"/>
+        <a href="/" class="btn btn-default">Cancle</a>
+    </div>
+</form>
+
+{% endblock page_content %}
+

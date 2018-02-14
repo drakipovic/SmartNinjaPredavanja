@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}TODO{% endblock title %}
+
+{% block page_content %}
+
+{% if archived %}
+    <h1>Archive</h1>
+{% else%}
+    <h1>Inbox</h1>
+{% endif %}
+
+<div id="home" class="container">
+{% for message in messages %}
+    <a class="row">
+        <a href="/message/{{ message.key.id() }}" class="col-xs-8">
+            {{ message.subject }}
+        </a>
+        <div class="col-xs-2">
+            <form method="post">
+                <input type="hidden" name="id" value="{{ message.key.id() }}">
+                {% if message.archived %}
+                    <input type="submit" class="btn btn-primary" value="Move to inbox">
+                {% else %}
+                    <input type="submit" class="btn btn-primary" value="Move to archive">
+                {% endif %}
+            </form>
+        </div>
+        <div class="col-xs-2">
+            <a href="/message/{{ message.key.id() }}/delete" class="btn btn-danger">
+                Delete message
+            </a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock page_content %}
+
